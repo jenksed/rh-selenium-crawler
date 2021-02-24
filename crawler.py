@@ -48,12 +48,6 @@ def getTrucks():
             d["Truck Name"]=item.find("h4").text
             d["Link to Page"]=constant_base+item.find('a')['href']
 
-            div_style = item.find('div')['s
-            #style = cssutils.parseStyle(div_style)
-            #imgUrl = style['background-image']
-            #imgUrl = imgUrl.replace('url(', '').replace(')', '')
-            d["Image URL"]=div_style
-
             l.append(d)
         time.sleep(1)
 
