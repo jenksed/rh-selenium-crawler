@@ -1,4 +1,6 @@
-chromedriver
 /old
-Pipfile*
 /images
+
+chromedriver
+config.py
+Pipfile*

@@ -7,16 +7,18 @@ import requests
 import re
 import pandas
 import time
+from config import *
 
 city="DETROIT"
 state="MI"
 country="US"
 results=1
+num_pages=1
+base=BASE_URL
+
+url=base+city.lower()+"-"+state.lower()+"/"
 
 #num_pages=results//21
-num_pages=1
-constant_base="https://roaminghunger.com"
-base_url="https://roaminghunger.com/food-trucks/"+city.lower()+"-"+state.lower()+"/"
 
 def main():
     getTrucks()
@@ -30,7 +32,7 @@ def getTrucks():
 
         driver = generateBrowser()
         driver.implicitly_wait(30)
-        driver.get(base_url+str(page))
+        driver.get(url+str(page))
         scroll(driver, 5)
 
         # Once scroll returns bs4 parsers the page_source
@@ -56,33 +58,6 @@ def getTrucks():
         time.sleep(1)
 
         print(l)
-        #for truck in driver.find_elements_by_class_name('_53x7N'):
-
-        #    d={}
-        #    d["Truck Name"] = truck.find_element_by_tag_name('h4').text
-        #    d["Link to Page"] = truck.find_element_by_tag_name('a').get_attribute('href')
-        #    d["Location"] = country+" > "+state+" > "+city
-
-        #    img_url = truck.get_attribute("style")
-        #    print(img_url)
-
-            #if img_url is not None:
-            #    img_filename = processImage(img_url)
-            #else:
-            #    img_filename = "None"
-
-            #d["Image"] = img_filename
-
-            #trucks.append(d)
-        #    time.sleep(2)
-
-
-    #print(trucks)
-    #print("===================")
-    #print("Processing CSV File")
-    #df=pandas.DataFrame(l)
-    #df.to_csv(city+"_"+state+"_truck_links.csv")
-    #c=r.content
 
 def generateBrowser():
     chrome_options = Options()
