@@ -23,6 +23,8 @@ url=base+city.lower()+"-"+state.lower()+"/"
 def main():
     getTrucks()
 
+#TODO Add comments to each of the functions
+
 def getTrucks():
 
     trucks = []
